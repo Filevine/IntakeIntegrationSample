@@ -18,11 +18,12 @@ namespace FilevineIntakeIntegrationDemo
                 if (response.IsSuccessStatusCode)
                 {
                     var stringData = await response.Content.ReadAsStringAsync();
-                    orgList = JsonConvert.DeserializeObject<List<OrgMinimalResponse>>(stringData);
+                    var result = JsonConvert.DeserializeObject<FilevineApiResult>(stringData);
+                    orgList = result.Data;
                 }
                 return orgList;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -59,7 +60,7 @@ namespace FilevineIntakeIntegrationDemo
                 }
                 return projectID;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -68,7 +69,6 @@ namespace FilevineIntakeIntegrationDemo
         private HttpClient GetApiClient(string apiKey, string url)
         {
             var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Content-Type", "text/json");
             client.DefaultRequestHeaders.Add("filevine-api-key", apiKey);
             client.BaseAddress = new Uri("https://app.filevine.com/");
 

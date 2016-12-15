@@ -28,9 +28,9 @@ namespace FilevineIntakeIntegrationDemo
 
             SetButtons();
 
-            if (cboFirm.SelectedValue != null)
+            if (cboFirm.SelectedItem != null)
             {
-                var projectTypes = ((OrgMinimalResponse) cboFirm.SelectedValue).ProjectTypes;
+                var projectTypes = ((OrgMinimalResponse) cboFirm.SelectedItem).ProjectTypes;
                 foreach (var projectType in projectTypes)
                     cboProjectType.Items.Add(projectType);
             }
@@ -73,6 +73,7 @@ namespace FilevineIntakeIntegrationDemo
         private async void btnGetList_Click(object sender, EventArgs e)
         {
             cboFirm.Items.Clear();
+            cboProjectType.Items.Clear();
 
             _orgList = await _api.CallForOrgList(tbxApiKey.Text);
 
