@@ -55,20 +55,24 @@
             // 
             // cboFirm
             // 
+            this.cboFirm.DisplayMember = "Name";
             this.cboFirm.FormattingEnabled = true;
             this.cboFirm.Location = new System.Drawing.Point(487, 84);
             this.cboFirm.Name = "cboFirm";
             this.cboFirm.Size = new System.Drawing.Size(156, 21);
             this.cboFirm.TabIndex = 0;
+            this.cboFirm.ValueMember = "ID";
             this.cboFirm.SelectedIndexChanged += new System.EventHandler(this.cboFirm_SelectedIndexChanged);
             // 
             // cboProjectType
             // 
+            this.cboProjectType.DisplayMember = "Name";
             this.cboProjectType.FormattingEnabled = true;
             this.cboProjectType.Location = new System.Drawing.Point(487, 137);
             this.cboProjectType.Name = "cboProjectType";
             this.cboProjectType.Size = new System.Drawing.Size(156, 21);
             this.cboProjectType.TabIndex = 1;
+            this.cboProjectType.ValueMember = "ID";
             this.cboProjectType.SelectedIndexChanged += new System.EventHandler(this.cboProjectType_SelectedIndexChanged);
             // 
             // groupBox1
