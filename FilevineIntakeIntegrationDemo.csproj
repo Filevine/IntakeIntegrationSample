@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RequestObjects.cs" />
-    <Compile Include="FilevineCalls.cs" />
+    <Compile Include="FilevineClient.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

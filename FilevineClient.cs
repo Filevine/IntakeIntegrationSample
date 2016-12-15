@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,22 +6,21 @@ using Newtonsoft.Json;
 
 namespace FilevineIntakeIntegrationDemo
 {
-    public class FilevineCalls
+    public class FilevineClient
     {
-        public async Task<List<OrgMinimalResponse>> CallForOrgList(string apiKey)
+        public async Task<GetOrgListResult> CallForOrgList(string apiKey)
         {
-            var client = GetApiClient(apiKey, "");
-            var orgList = new List<OrgMinimalResponse>();
+            var client = GetApiClient(apiKey);
+            var result = new GetOrgListResult();
             try
             {
                 var response = await client.GetAsync("api/public/v1/orgs");
                 if (response.IsSuccessStatusCode)
                 {
                     var stringResult = await response.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<GetOrgListResult>(stringResult);
-                    orgList = result.Data;
+                    result = JsonConvert.DeserializeObject<GetOrgListResult>(stringResult);
                 }
-                return orgList;
+                return result;
             }
             catch (Exception ex)
             {
@@ -30,9 +28,10 @@ namespace FilevineIntakeIntegrationDemo
             }
         }
     
-        public async Task<int> SendProjectInfo(string apiKey, int orgID, int projectTypeID, string clientFirstName, string clientLastName)
+        public async Task<SendProjectResult> SendProjectInfo(string apiKey, int orgID, int projectTypeID, string clientFirstName, string clientLastName)
         {
-            var client = GetApiClient(apiKey, "");
+            var client = GetApiClient(apiKey);
+            var result = new SendProjectResult();
 
             var project = new CreateExtendedProjectRequest();
             project.ProjectTypeID = projectTypeID;
@@ -50,17 +49,16 @@ namespace FilevineIntakeIntegrationDemo
             project.OtherContacts.Add(new PersonRequest { FirstName = "Betty", LastName = "Smith" });
 
             var projectJson = new StringContent(JsonConvert.SerializeObject(project), Encoding.UTF8, "application/json");
-            var projectID = 0;
+
             try
             {
                 var response = await client.PostAsync($"api/public/v1/orgs/{orgID}/projects/create", projectJson);
                 if (response.IsSuccessStatusCode)
                 {
                     var stringResult = await response.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<SendExtendedProjectResult>(stringResult);
-                    projectID = result.Data.ProjectID;
+                    result = JsonConvert.DeserializeObject<SendProjectResult>(stringResult);
                 }
-                return projectID;
+                return result;
             }
             catch (Exception ex)
             {
@@ -68,7 +66,7 @@ namespace FilevineIntakeIntegrationDemo
             }
         }
 
-        private HttpClient GetApiClient(string apiKey, string url)
+        private HttpClient GetApiClient(string apiKey)
         {
             var client = new HttpClient();
             client.DefaultRequestHeaders.Add("filevine-api-key", apiKey);

@@ -48,6 +48,8 @@
             this.tbxClientFirstName = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.tbxGetOrgResult = new System.Windows.Forms.TextBox();
+            this.tbxSendProjectResult = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -119,6 +121,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Controls.Add(this.tbxGetOrgResult);
             this.groupBox2.Controls.Add(this.btnGetList);
             this.groupBox2.Controls.Add(this.textBox3);
             this.groupBox2.Controls.Add(this.label3);
@@ -174,6 +177,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox3.Controls.Add(this.tbxSendProjectResult);
             this.groupBox3.Controls.Add(this.btnSendProject);
             this.groupBox3.Controls.Add(this.tbxClientLastName);
             this.groupBox3.Controls.Add(this.label5);
@@ -253,6 +257,28 @@
             this.label6.TabIndex = 3;
             this.label6.Text = "Intake Integration Sample Code Demo";
             // 
+            // tbxGetOrgResult
+            // 
+            this.tbxGetOrgResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxGetOrgResult.Location = new System.Drawing.Point(73, 101);
+            this.tbxGetOrgResult.Multiline = true;
+            this.tbxGetOrgResult.Name = "tbxGetOrgResult";
+            this.tbxGetOrgResult.ReadOnly = true;
+            this.tbxGetOrgResult.Size = new System.Drawing.Size(328, 57);
+            this.tbxGetOrgResult.TabIndex = 5;
+            this.tbxGetOrgResult.Text = "get orgs result";
+            // 
+            // tbxSendProjectResult
+            // 
+            this.tbxSendProjectResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxSendProjectResult.Location = new System.Drawing.Point(73, 102);
+            this.tbxSendProjectResult.Multiline = true;
+            this.tbxSendProjectResult.Name = "tbxSendProjectResult";
+            this.tbxSendProjectResult.ReadOnly = true;
+            this.tbxSendProjectResult.Size = new System.Drawing.Size(328, 57);
+            this.tbxSendProjectResult.TabIndex = 10;
+            this.tbxSendProjectResult.Text = "send project result";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -297,6 +323,8 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnGetList;
+        private System.Windows.Forms.TextBox tbxGetOrgResult;
+        private System.Windows.Forms.TextBox tbxSendProjectResult;
     }
 }
 

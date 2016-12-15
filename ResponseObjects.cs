@@ -24,7 +24,7 @@ namespace FilevineIntakeIntegrationDemo
         public List<ProjectTypeMinimalResponse> ProjectTypes { get; set; }
     }
 
-    public class SendExtendedProjectResult : FilevineApiResult
+    public class SendProjectResult : FilevineApiResult
     {
         public ProjectMinimalResponse Data { get; set; }
     }

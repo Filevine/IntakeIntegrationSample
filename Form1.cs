@@ -1,20 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace FilevineIntakeIntegrationDemo
 {
     public partial class Form1 : Form
     {
-        private readonly FilevineCalls _api;
-        private List<OrgMinimalResponse> _orgList;
+        private readonly FilevineClient _api;
+        private GetOrgListResult _orgListResult;
+        private Color _successColor = Color.DarkRed;
+        private Color _failureColor = Color.ForestGreen;
 
         public Form1()
         {
             InitializeComponent();
-            _api = new FilevineCalls();
+            _api = new FilevineClient();
         }
 
         private void tbxApiKey_TextChanged(object sender, EventArgs e)
@@ -62,6 +62,9 @@ namespace FilevineIntakeIntegrationDemo
                 cboProjectType.Items.Count > 0 && cboProjectType.SelectedItem != null &&
                 tbxClientFirstName.Text.Trim() != "" &&
                 tbxClientLastName.Text.Trim() != "";
+
+            tbxGetOrgResult.Visible = false;
+            tbxSendProjectResult.Visible = false;
         }
 
         private async void btnSendProject_Click(object sender, EventArgs e)
@@ -73,7 +76,20 @@ namespace FilevineIntakeIntegrationDemo
                 tbxClientFirstName.Text, 
                 tbxClientLastName.Text);
 
-            //TODO show either projectID and "Success" or error
+            if (result.Success)
+            {
+                tbxSendProjectResult.Text = "SUCCESS - sent Project";
+                tbxSendProjectResult.ForeColor = _successColor;
+            }
+            else
+            {
+                tbxGetOrgResult.Text = $"FAILED - {result.Message}";
+                tbxSendProjectResult.ForeColor = _failureColor;
+            }
+
+            SetButtons();
+
+            tbxSendProjectResult.Visible = true;
         }
 
         private async void btnGetList_Click(object sender, EventArgs e)
@@ -81,12 +97,24 @@ namespace FilevineIntakeIntegrationDemo
             cboFirm.Items.Clear();
             cboProjectType.Items.Clear();
 
-            _orgList = await _api.CallForOrgList(tbxApiKey.Text);
+            _orgListResult = await _api.CallForOrgList(tbxApiKey.Text);
+            if (_orgListResult.Success)
+            {
+                tbxGetOrgResult.Text = "SUCCESS - loaded Firms";
+                tbxGetOrgResult.ForeColor = _successColor;
 
-            foreach (var org in _orgList)
-                cboFirm.Items.Add(org);
+                foreach (var org in _orgListResult.Data)
+                    cboFirm.Items.Add(org);
+            }
+            else
+            {
+                tbxGetOrgResult.Text = $"FAILED - {_orgListResult.Message}";
+                tbxGetOrgResult.ForeColor = _failureColor;
+            }
 
-            //TODO show error
+            SetButtons();
+
+            tbxGetOrgResult.Visible = true;
         }
     }
 }

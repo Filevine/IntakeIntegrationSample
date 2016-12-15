@@ -8,4 +8,3 @@ D:\Dev\FilevineIntakeIntegrationDemo\bin\Debug\Newtonsoft.Json.dll
 D:\Dev\FilevineIntakeIntegrationDemo\bin\Debug\Newtonsoft.Json.xml
 D:\Dev\FilevineIntakeIntegrationDemo\obj\Debug\FilevineIntakeIntegrationDemo.exe
 D:\Dev\FilevineIntakeIntegrationDemo\obj\Debug\FilevineIntakeIntegrationDemo.pdb
-D:\Dev\FilevineIntakeIntegrationDemo\obj\Debug\FilevineIntakeIntegrationDemo.csprojResolveAssemblyReference.cache
