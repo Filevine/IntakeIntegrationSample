@@ -8,8 +8,8 @@ namespace FilevineIntakeIntegrationDemo
     {
         private readonly FilevineClient _api;
         private GetOrgListResult _orgListResult;
-        private Color _successColor = Color.DarkRed;
-        private Color _failureColor = Color.ForestGreen;
+        private readonly Color _successColor = Color.DarkRed;
+        private readonly Color _failureColor = Color.ForestGreen;
 
         public Form1()
         {
@@ -78,7 +78,7 @@ namespace FilevineIntakeIntegrationDemo
 
             if (result.Success)
             {
-                tbxSendProjectResult.Text = "SUCCESS - sent Project";
+                tbxSendProjectResult.Text = $"SUCCESS - sent Project\r\n{result.Data.ProjectUrl}";
                 tbxSendProjectResult.ForeColor = _successColor;
             }
             else
