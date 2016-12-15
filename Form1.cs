@@ -66,7 +66,13 @@ namespace FilevineIntakeIntegrationDemo
 
         private async void btnSendProject_Click(object sender, EventArgs e)
         {
-            var result = await _api.SendProjectInfo(tbxApiKey.Text, (int)cboFirm.SelectedValue, (int)cboProjectType.SelectedValue, tbxClientFirstName.Text, tbxClientLastName.Text);
+            var result = await _api.SendProjectInfo(
+                tbxApiKey.Text, 
+                ((OrgMinimalResponse)cboFirm.SelectedItem).ID, 
+                ((ProjectTypeMinimalResponse)cboProjectType.SelectedItem).ID, 
+                tbxClientFirstName.Text, 
+                tbxClientLastName.Text);
+
             //TODO show either projectID and "Success" or error
         }
 

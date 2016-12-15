@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -17,8 +18,8 @@ namespace FilevineIntakeIntegrationDemo
                 var response = await client.GetAsync("api/public/v1/orgs");
                 if (response.IsSuccessStatusCode)
                 {
-                    var stringData = await response.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<FilevineApiResult>(stringData);
+                    var stringResult = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<GetOrgListResult>(stringResult);
                     orgList = result.Data;
                 }
                 return orgList;
@@ -48,15 +49,16 @@ namespace FilevineIntakeIntegrationDemo
             project.OtherContacts.Add(new PersonRequest {FirstName = "Joe", LastName = "Jones"});
             project.OtherContacts.Add(new PersonRequest { FirstName = "Betty", LastName = "Smith" });
 
-            var projectJson = new StringContent(JsonConvert.SerializeObject(project));
+            var projectJson = new StringContent(JsonConvert.SerializeObject(project), Encoding.UTF8, "application/json");
             var projectID = 0;
             try
             {
                 var response = await client.PostAsync($"api/public/v1/orgs/{orgID}/projects/create", projectJson);
                 if (response.IsSuccessStatusCode)
                 {
-                    var stringData = await response.Content.ReadAsStringAsync();
-                    projectID = JsonConvert.DeserializeObject<int>(stringData);
+                    var stringResult = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<SendExtendedProjectResult>(stringResult);
+                    projectID = result.Data.ProjectID;
                 }
                 return projectID;
             }
