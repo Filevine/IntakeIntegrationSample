@@ -83,7 +83,7 @@ namespace FilevineIntakeIntegrationDemo
             }
             else
             {
-                tbxGetOrgResult.Text = $"FAILED - {result.Message}";
+                tbxSendProjectResult.Text = $"FAILED - {result.Message}";
                 tbxSendProjectResult.ForeColor = _failureColor;
             }
 
