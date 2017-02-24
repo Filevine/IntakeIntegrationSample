@@ -33,6 +33,8 @@ namespace FilevineIntakeIntegrationDemo
     {
         public int ID { get; set; }
         public string Name { get; set; }
+
+        public string Display => $"{Name} ({ID})";
     }
 
     public class ProjectMinimalResponse

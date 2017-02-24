@@ -36,11 +36,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbxApiKey = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tbxGetOrgResult = new System.Windows.Forms.TextBox();
             this.btnGetList = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tbxSendProjectResult = new System.Windows.Forms.TextBox();
             this.btnSendProject = new System.Windows.Forms.Button();
             this.tbxClientLastName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,8 +50,6 @@
             this.tbxClientFirstName = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.tbxGetOrgResult = new System.Windows.Forms.TextBox();
-            this.tbxSendProjectResult = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -61,18 +61,18 @@
             this.cboFirm.FormattingEnabled = true;
             this.cboFirm.Location = new System.Drawing.Point(487, 84);
             this.cboFirm.Name = "cboFirm";
-            this.cboFirm.Size = new System.Drawing.Size(156, 21);
+            this.cboFirm.Size = new System.Drawing.Size(197, 21);
             this.cboFirm.TabIndex = 0;
             this.cboFirm.ValueMember = "ID";
             this.cboFirm.SelectedIndexChanged += new System.EventHandler(this.cboFirm_SelectedIndexChanged);
             // 
             // cboProjectType
             // 
-            this.cboProjectType.DisplayMember = "Name";
+            this.cboProjectType.DisplayMember = "Display";
             this.cboProjectType.FormattingEnabled = true;
             this.cboProjectType.Location = new System.Drawing.Point(487, 137);
             this.cboProjectType.Name = "cboProjectType";
-            this.cboProjectType.Size = new System.Drawing.Size(156, 21);
+            this.cboProjectType.Size = new System.Drawing.Size(197, 21);
             this.cboProjectType.TabIndex = 1;
             this.cboProjectType.ValueMember = "ID";
             this.cboProjectType.SelectedIndexChanged += new System.EventHandler(this.cboProjectType_SelectedIndexChanged);
@@ -114,7 +114,7 @@
             // 
             this.tbxApiKey.Location = new System.Drawing.Point(487, 44);
             this.tbxApiKey.Name = "tbxApiKey";
-            this.tbxApiKey.Size = new System.Drawing.Size(156, 20);
+            this.tbxApiKey.Size = new System.Drawing.Size(197, 20);
             this.tbxApiKey.TabIndex = 0;
             this.tbxApiKey.TextChanged += new System.EventHandler(this.tbxApiKey_TextChanged);
             // 
@@ -135,9 +135,20 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "2. Get Lists from Filevine and Select";
             // 
+            // tbxGetOrgResult
+            // 
+            this.tbxGetOrgResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxGetOrgResult.Location = new System.Drawing.Point(73, 101);
+            this.tbxGetOrgResult.Multiline = true;
+            this.tbxGetOrgResult.Name = "tbxGetOrgResult";
+            this.tbxGetOrgResult.ReadOnly = true;
+            this.tbxGetOrgResult.Size = new System.Drawing.Size(328, 57);
+            this.tbxGetOrgResult.TabIndex = 5;
+            this.tbxGetOrgResult.Text = "get orgs result";
+            // 
             // btnGetList
             // 
-            this.btnGetList.Location = new System.Drawing.Point(568, 27);
+            this.btnGetList.Location = new System.Drawing.Point(609, 27);
             this.btnGetList.Name = "btnGetList";
             this.btnGetList.Size = new System.Drawing.Size(75, 23);
             this.btnGetList.TabIndex = 4;
@@ -191,9 +202,20 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "3. Send Case to Filevine";
             // 
+            // tbxSendProjectResult
+            // 
+            this.tbxSendProjectResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxSendProjectResult.Location = new System.Drawing.Point(73, 102);
+            this.tbxSendProjectResult.Multiline = true;
+            this.tbxSendProjectResult.Name = "tbxSendProjectResult";
+            this.tbxSendProjectResult.ReadOnly = true;
+            this.tbxSendProjectResult.Size = new System.Drawing.Size(328, 57);
+            this.tbxSendProjectResult.TabIndex = 10;
+            this.tbxSendProjectResult.Text = "send project result";
+            // 
             // btnSendProject
             // 
-            this.btnSendProject.Location = new System.Drawing.Point(522, 136);
+            this.btnSendProject.Location = new System.Drawing.Point(563, 136);
             this.btnSendProject.Name = "btnSendProject";
             this.btnSendProject.Size = new System.Drawing.Size(121, 23);
             this.btnSendProject.TabIndex = 8;
@@ -205,7 +227,7 @@
             // 
             this.tbxClientLastName.Location = new System.Drawing.Point(487, 86);
             this.tbxClientLastName.Name = "tbxClientLastName";
-            this.tbxClientLastName.Size = new System.Drawing.Size(156, 20);
+            this.tbxClientLastName.Size = new System.Drawing.Size(197, 20);
             this.tbxClientLastName.TabIndex = 7;
             this.tbxClientLastName.TextChanged += new System.EventHandler(this.tbxClientLastName_TextChanged);
             // 
@@ -231,7 +253,7 @@
             // 
             this.tbxClientFirstName.Location = new System.Drawing.Point(487, 35);
             this.tbxClientFirstName.Name = "tbxClientFirstName";
-            this.tbxClientFirstName.Size = new System.Drawing.Size(156, 20);
+            this.tbxClientFirstName.Size = new System.Drawing.Size(197, 20);
             this.tbxClientFirstName.TabIndex = 5;
             this.tbxClientFirstName.TextChanged += new System.EventHandler(this.tbxClientFirstName_TextChanged);
             // 
@@ -256,28 +278,6 @@
             this.label6.Size = new System.Drawing.Size(374, 25);
             this.label6.TabIndex = 3;
             this.label6.Text = "Intake Integration Sample Code Demo";
-            // 
-            // tbxGetOrgResult
-            // 
-            this.tbxGetOrgResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxGetOrgResult.Location = new System.Drawing.Point(73, 101);
-            this.tbxGetOrgResult.Multiline = true;
-            this.tbxGetOrgResult.Name = "tbxGetOrgResult";
-            this.tbxGetOrgResult.ReadOnly = true;
-            this.tbxGetOrgResult.Size = new System.Drawing.Size(328, 57);
-            this.tbxGetOrgResult.TabIndex = 5;
-            this.tbxGetOrgResult.Text = "get orgs result";
-            // 
-            // tbxSendProjectResult
-            // 
-            this.tbxSendProjectResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxSendProjectResult.Location = new System.Drawing.Point(73, 102);
-            this.tbxSendProjectResult.Multiline = true;
-            this.tbxSendProjectResult.Name = "tbxSendProjectResult";
-            this.tbxSendProjectResult.ReadOnly = true;
-            this.tbxSendProjectResult.Size = new System.Drawing.Size(328, 57);
-            this.tbxSendProjectResult.TabIndex = 10;
-            this.tbxSendProjectResult.Text = "send project result";
             // 
             // Form1
             // 
